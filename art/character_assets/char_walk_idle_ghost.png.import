@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://u7qhlb2a3lvd"
-path="res://.godot/imported/char_walk_idle_ghost.png-37fa9f4ac1795a15573c7f4c62918bf3.ctex"
+path="res://.godot/imported/char_walk_idle_ghost.png-9f4854c18f9bd6de21e1862b9623178e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://character_assets/char_walk_idle_ghost.png"
-dest_files=["res://.godot/imported/char_walk_idle_ghost.png-37fa9f4ac1795a15573c7f4c62918bf3.ctex"]
+source_file="res://art/character_assets/char_walk_idle_ghost.png"
+dest_files=["res://.godot/imported/char_walk_idle_ghost.png-9f4854c18f9bd6de21e1862b9623178e.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

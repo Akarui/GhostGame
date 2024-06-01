@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ur8bypw8u5oo"
-path="res://.godot/imported/char_walk_right_ghost-Sheet.png-7e1742c221a33ed1ee202125b4024802.ctex"
+path="res://.godot/imported/char_walk_right_ghost-Sheet.png-1d64f9dc124cae91fc4b568c1d9e0495.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://character_assets/char_walk_right_ghost-Sheet.png"
-dest_files=["res://.godot/imported/char_walk_right_ghost-Sheet.png-7e1742c221a33ed1ee202125b4024802.ctex"]
+source_file="res://art/character_assets/char_walk_right_ghost-Sheet.png"
+dest_files=["res://.godot/imported/char_walk_right_ghost-Sheet.png-1d64f9dc124cae91fc4b568c1d9e0495.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

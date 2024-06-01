@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp7yl5n4hqxok"]
+
+[ext_resource type="Script" path="res://scripts/wandererpath.gd" id="1_dck2h"]
+[ext_resource type="Texture2D" uid="uid://cmw4oewmmoa02" path="res://art/Player1.png" id="2_byxyu"]
+
+[sub_resource type="Curve2D" id="Curve2D_43l4s"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 601, 30, 0, 0, 0, 0, 156, 66, 0, 0, 0, 0, 535, 169, 0, 0, 0, 0, 289, 300, 0, 0, 0, 0, 54, 260, 0, 0, 0, 0, 601, 30)
+}
+point_count = 6
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_an6wq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_byxyu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v1vcj"]
+
+[node name="Wanderer" type="Node2D"]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_43l4s")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(601, 30)
+rotation = 3.06087
+rotates = false
+script = ExtResource("1_dck2h")
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D" groups=["enemy"]]
+rotation = -3.06087
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Area2D"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_an6wq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_v1vcj")

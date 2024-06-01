@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hf2k3um1rkw4"
-path="res://.godot/imported/char_walk_left_ghost-Sheet.png-c8db8ec3f1946d8c0c3106534bf738c9.ctex"
+uid="uid://dbafgbrdfv05s"
+path="res://.godot/imported/char_walk_down_ghost_V2-Sheet.png-11f2d19a9ac8eaaff228c0cae0fd735b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://character_assets/char_walk_left_ghost-Sheet.png"
-dest_files=["res://.godot/imported/char_walk_left_ghost-Sheet.png-c8db8ec3f1946d8c0c3106534bf738c9.ctex"]
+source_file="res://art/character_assets/char_walk_down_ghost_V2-Sheet.png"
+dest_files=["res://.godot/imported/char_walk_down_ghost_V2-Sheet.png-11f2d19a9ac8eaaff228c0cae0fd735b.ctex"]
 
 [params]
 
