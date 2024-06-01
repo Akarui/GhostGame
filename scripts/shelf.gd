@@ -5,19 +5,21 @@ extends Node2D
 
 var book_scene = load("res://scenes/book.tscn")
 
-var WIDTH = 250
-var HEIGHT = 180
+var WIDTH = 192
+var HEIGHT = 128
 
 var loci: Array = []
 var cursor_offset = Vector2(0, 100)
 var workable_width = WIDTH * 0.8
 var first_node = Vector2.ZERO
 var cursor_index = 0
+var book_selected = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	var num_books = randi_range(3,8)
+	#var num_books = randi_range(3,8)
+	var num_books = 7
 	for i in num_books:
 		var book = book_scene.instantiate()
 		book.cover_color = Color(randf(), randf(), randf(), 1)
@@ -35,33 +37,85 @@ func _ready():
 		books.get_child(i).position = loci[i]
 	
 	cursor.position = loci[0] + cursor_offset
+	cursor.get_node("CanvasLayer").get_node("Label").text = "Cursor: 0"
 	books.get_child(0).highlight()
 	
-
-
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("ui_left"):
-		if cursor_index > 0:
-			books.get_child(cursor_index).unhighlight()
-			cursor_index -= 1
-			cursor.position = loci[cursor_index] + cursor_offset
-			books.get_child(cursor_index).highlight()
+	if not book_selected:
+		if Input.is_action_just_pressed("cursor_left"):
+			if cursor_index > 0:
+				books.get_child(cursor_index).unhighlight()
+				cursor_index -= 1
+				cursor.position = loci[cursor_index] + cursor_offset
+				cursor.get_node("CanvasLayer").get_node("Label").text = "Cursor: " + str(cursor_index)
+				books.get_child(cursor_index).highlight()
+			else:
+				books.get_child(cursor_index).budge()
+				
+		if Input.is_action_just_pressed("cursor_right"):
+			if cursor_index < books.get_child_count() - 1:
+				books.get_child(cursor_index).unhighlight()
+				cursor_index += 1
+				cursor.position = loci[cursor_index] + cursor_offset
+				cursor.get_node("CanvasLayer").get_node("Label").text = "Cursor: " + str(cursor_index)
+				books.get_child(cursor_index).highlight()
+			else:
+				books.get_child(cursor_index).budge()
+				
+		if Input.is_action_just_pressed("select_book"):
+			var book = books.get_child(cursor_index)
+			if book.is_lifted:
+				print("ERROR: book already lifted")
+				get_tree().quit()
+			else:
+				book.lift()
+				book_selected = true
+				
+	else:
+		if Input.is_action_just_pressed("cursor_left"):
+			if cursor_index > 0:
+				books.move_child(books.get_child(cursor_index), cursor_index - 1)
+				cursor_index -= 1
+				books.get_child(cursor_index + 1).shift_left()
+				books.get_child(cursor_index).shift_right()
+				cursor.position = loci[cursor_index] + cursor_offset
+				cursor.get_node("CanvasLayer").get_node("Label").text = "Cursor: " + str(cursor_index)
+			else:
+				books.get_child(cursor_index).budge()
+				
+		if Input.is_action_just_pressed("cursor_right"):
+			if cursor_index < books.get_child_count() - 1:
+				books.move_child(books.get_child(cursor_index), cursor_index + 1)
+				cursor_index += 1
+				books.get_child(cursor_index - 1).shift_right()
+				books.get_child(cursor_index).shift_left()
+				cursor.position = loci[cursor_index] + cursor_offset
+				cursor.get_node("CanvasLayer").get_node("Label").text = "Cursor: " + str(cursor_index)
+			else:
+				books.get_child(cursor_index).budge()
+				
+		if Input.is_action_just_pressed("select_book"):
+			var book = books.get_child(cursor_index)
+			if book.is_lifted:
+				book.drop()
+				book_selected = false
+			else:
+				print("ERROR: book already dropped")
+				get_tree().quit()
+		
 			
-	if Input.is_action_just_pressed("ui_right"):
-		if cursor_index < books.get_child_count() - 1:
-			books.get_child(cursor_index).unhighlight()
-			cursor_index += 1
-			cursor.position = loci[cursor_index] + cursor_offset
-			books.get_child(cursor_index).highlight()
-		#
-	#if Input.is_action_just_pressed("ui_accept"):
-		#var num = randi() % books.get_child_count()
-		#cursor.position = loci[num] + cursor_offset
-		#
-		#books.get_child(num).highlight()
-		#await get_tree().create_timer(1).timeout
-		#books.get_child(num).unhighlight()
+		#books.get_child(cursor_index).position.y -= 10
+		#books.get_child(cursor_index).modulate = Color.YELLOW
+		#books.get_child(cursor_index).scale += Vector2(0.2, 0)
+		#await get_tree().create_timer(.1).timeout
+		#books.get_child(cursor_index).position.y += 10
+		#books.get_child(cursor_index).modulate = Color.WHITE
+		#books.get_child(cursor_index).scale -= Vector2(0.2, 0)
+		
+		
+func get_loci():
+	return loci
 
 

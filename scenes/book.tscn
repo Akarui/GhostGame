@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcqql30axjlde"]
+[gd_scene load_steps=12 format=3 uid="uid://dcqql30axjlde"]
 
 [ext_resource type="Script" path="res://scripts/book.gd" id="1_ncy6f"]
 [ext_resource type="Texture2D" uid="uid://jxqxvh53gbe0" path="res://art/book_cover.png" id="2_pnnwr"]
@@ -41,8 +41,35 @@ tracks/0/path = NodePath("..:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 2),
-"points": PackedFloat32Array(0, -0.25, 0.987245, 0.25323, -1, -50, -0.263713, -1, 0.25, 0.948),
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.249998, 1.56775, 0.239194, -1.5, -20, -0.077746, -13.5, 0.0611628, 29.5),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aikir"]
+resource_name = "lift"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-20, -0.25, 0.987245, 0.25323, -1, -80, -0.263713, -1, 0.25, 0.948),
 "times": PackedFloat32Array(0, 0.3)
 }
 tracks/1/type = "value"
@@ -58,8 +85,8 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(1.2, 1.2)]
 }
 
-[sub_resource type="Animation" id="Animation_2fctb"]
-resource_name = "unhighlight"
+[sub_resource type="Animation" id="Animation_6ix60"]
+resource_name = "drop"
 length = 0.3
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -68,9 +95,9 @@ tracks/0/path = NodePath("..:position:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 2),
-"points": PackedFloat32Array(-50, -0.25, 0.846396, 0.29537, -1, 0, -0.23294, -1, 0, 0),
-"times": PackedFloat32Array(0, 0.299662)
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-80, -0.25, 0.987245, 0.25323, -1, -20, -0.263713, -1, 0.25, 0.948),
+"times": PackedFloat32Array(0, 0.3)
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -82,14 +109,86 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1.2, 1.2), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_r1w5u"]
+resource_name = "budge"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(1, 1, 1, 1),
+"points": PackedFloat32Array(-50, 0, 0, 0, 0, -55, 0, 0, 0, 0, -45, 0, 0, 0, 0, -50, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3pq1t"]
+resource_name = "right_shift"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_swk7a"]
+resource_name = "unhighlight2"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-20, -0.249998, 1.56775, 0.159914, -7.5, 0, -0.126533, 28.5, 0.0733596, -48.5),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yo4at"]
 _data = {
 "RESET": SubResource("Animation_2bp7g"),
+"budge": SubResource("Animation_r1w5u"),
+"drop": SubResource("Animation_6ix60"),
 "highlight": SubResource("Animation_vuqf3"),
-"unhighlight": SubResource("Animation_2fctb")
+"lift": SubResource("Animation_aikir"),
+"right_shift": SubResource("Animation_3pq1t"),
+"unhighlight": SubResource("Animation_swk7a")
 }
 
 [node name="Book" type="Node2D"]
@@ -110,3 +209,13 @@ texture = ExtResource("2_pnnwr")
 [node name="Pages" type="Sprite2D" parent="Sprite"]
 texture_filter = 1
 texture = ExtResource("3_u2fkv")
+
+[node name="Label" type="Label" parent="Sprite"]
+offset_left = -15.0
+offset_top = 3.0
+offset_right = 10.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 2
