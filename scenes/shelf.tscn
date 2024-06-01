@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bij6vtgo5sr7f"]
+
+[ext_resource type="Script" path="res://scripts/shelf.gd" id="1_sfxd1"]
+[ext_resource type="Texture2D" uid="uid://bfn0kcs63lmb8" path="res://art/icon.svg" id="2_wxbav"]
+
+[node name="Shelf" type="Node2D"]
+script = ExtResource("1_sfxd1")
+
+[node name="Cursor" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0, 0, 0.768627, 1)
+position = Vector2(0, 100)
+scale = Vector2(0.171875, 0.171875)
+texture = ExtResource("2_wxbav")
+
+[node name="Books" type="Node2D" parent="."]
