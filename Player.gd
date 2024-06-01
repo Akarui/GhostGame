@@ -29,9 +29,16 @@ func _process(delta):
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
+		if (velocity.x > 0):
+			$AnimatedSprite2D.play("walk_right")
+		if (velocity.x < 0):
+			$AnimatedSprite2D.play("walk_left")
+		if (velocity.y < 0):
+			$AnimatedSprite2D.play("walk_up")
+		if (velocity.y > 0):
+			$AnimatedSprite2D.play("walk_down")
 	else:
-		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("idle")
 		
 	position += velocity * delta
 	
