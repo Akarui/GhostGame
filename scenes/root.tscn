@@ -31,4 +31,19 @@ sprite_frames = SubResource("SpriteFrames_q1eho")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CapsuleShape2D_g1x7i")
 
+[node name="BookShelfCanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="BookShelfCanvasLayer"]
+offset_left = 296.0
+offset_top = 101.0
+offset_right = 520.0
+offset_bottom = 261.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="BookShelfCanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(224, 160)
+render_target_update_mode = 4
+
 [connection signal="body_entered" from="Player" to="Player" method="_on_body_entered"]

@@ -1,16 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://bij6vtgo5sr7f"]
+[gd_scene load_steps=4 format=3 uid="uid://bij6vtgo5sr7f"]
 
 [ext_resource type="Script" path="res://scripts/shelf.gd" id="1_sfxd1"]
+[ext_resource type="Texture2D" uid="uid://cuxoqexl2yei3" path="res://art/shelf_backdrop.png" id="2_wgh8v"]
 [ext_resource type="Texture2D" uid="uid://bfn0kcs63lmb8" path="res://art/icon.svg" id="2_wxbav"]
 
 [node name="Shelf" type="Node2D"]
+position = Vector2(112, 80)
 script = ExtResource("1_sfxd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wgh8v")
 
 [node name="Cursor" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0, 0, 0.768627, 1)
-position = Vector2(0, 100)
 scale = Vector2(0.171875, 0.171875)
 texture = ExtResource("2_wxbav")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Cursor"]
+visible = false
+
+[node name="Label" type="Label" parent="Cursor/CanvasLayer"]
+offset_left = 1.0
+offset_top = 111.0
+offset_right = 113.0
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 12
+text = "cursor"
 
 [node name="Books" type="Node2D" parent="."]

@@ -9,20 +9,47 @@ extends Node2D
 		cover_color = v
 		$Sprite/Cover.modulate = v
 
-# Called when the node enters the scene tree for the first time.
+var is_lifted = false
+
 func _ready():
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	$Sprite/Label.set_position(position, true)
+	$Sprite/Label.text = str(get_index())
+	
+func shift_right():
+	print("anim shift_right")
+	var parent = get_parent().get_parent()
+	var loci = parent.get_loci()
+	position = loci[get_index()]
+	
+func shift_left():
+	print("anim shift_left")
+	var parent = get_parent().get_parent()
+	var loci = parent.get_loci()
+	position = loci[get_index()]
 
 func highlight():
-	if anim.get_queue().size() > 1:
-		return
-	anim.queue("highlight",)
+	anim.queue("highlight")
+	print("anim highlight")
 
-	
 func unhighlight():
 	anim.queue("unhighlight")
+	print("anim unhighlight")
+	
+func lift():
+	anim.queue("lift")
+	is_lifted = true
+	print("anim lift")
+	
+func drop():
+	anim.queue("drop")
+	is_lifted = false
+	print("anim drop")
+	
+func budge():
+	if anim.get_queue().size() > 1:
+		return
+	anim.queue("budge")
+	print("anim budge")
