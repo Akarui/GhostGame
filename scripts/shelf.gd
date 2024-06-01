@@ -3,7 +3,7 @@ extends Node2D
 @onready var books: Node2D = $Books
 @onready var cursor: Sprite2D = $Cursor
 
-var book_scene = preload("res://book.tscn")
+var book_scene = load("res://scenes/book.tscn")
 
 var WIDTH = 250
 var HEIGHT = 180

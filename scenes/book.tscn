@@ -1,35 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dcqql30axjlde"]
 
-[ext_resource type="Script" path="res://book.gd" id="1_g2ebf"]
+[ext_resource type="Script" path="res://scripts/book.gd" id="1_ncy6f"]
 [ext_resource type="Texture2D" uid="uid://jxqxvh53gbe0" path="res://art/book_cover.png" id="2_pnnwr"]
 [ext_resource type="Texture2D" uid="uid://lrsbshuuae5p" path="res://art/book_pages.png" id="3_u2fkv"]
-
-[sub_resource type="Animation" id="Animation_vuqf3"]
-resource_name = "highlight"
-length = 0.3
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 2),
-"points": PackedFloat32Array(0, -0.25, 0.987245, 0.25323, -1, -50, -0.263713, -1, 0.25, 0.948),
-"times": PackedFloat32Array(0, 0.3)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
-}
 
 [sub_resource type="Animation" id="Animation_2bp7g"]
 length = 0.001
@@ -56,6 +29,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vuqf3"]
+resource_name = "highlight"
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, -0.25, 0.987245, 0.25323, -1, -50, -0.263713, -1, 0.25, 0.948),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
 }
 
 [sub_resource type="Animation" id="Animation_2fctb"]
@@ -93,7 +93,7 @@ _data = {
 }
 
 [node name="Book" type="Node2D"]
-script = ExtResource("1_g2ebf")
+script = ExtResource("1_ncy6f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite/Cover")

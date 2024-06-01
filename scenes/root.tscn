@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bas0akupu1g3s"]
+[gd_scene load_steps=6 format=3 uid="uid://bas0akupu1g3s"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_4gbya"]
+[ext_resource type="Script" path="res://scripts/root.gd" id="1_n4p34"]
 [ext_resource type="Texture2D" uid="uid://cmw4oewmmoa02" path="res://art/Player1.png" id="2_xcvcl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q1eho"]
@@ -17,6 +18,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g1x7i"]
 
 [node name="Root" type="Node2D"]
+script = ExtResource("1_n4p34")
 
 [node name="Player" type="Area2D" parent="."]
 script = ExtResource("1_4gbya")
