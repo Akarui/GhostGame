@@ -1,16 +1,19 @@
 extends Area2D
 
 @export var speed = 200
-@export var PLAYER_START_X = 100
-@export var PLAYER_START_Y = 100;
+@export var PLAYER_START_X = 300
+@export var PLAYER_START_Y = 300
 var screen_size
 var can_move
+var game_over = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
 	modulate.a8 = 98
 	can_move = true
+	$DarkLight.visible = false
+	position = Vector2(screen_size.x / 2, (screen_size.y / 2) - 20)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -52,5 +55,16 @@ func _process(delta):
 
 func _on_area_entered(area):
 	if area.is_in_group("enemy"):
-		print(area, "Game Over") # Replace with function body.
+		game_over = true
 
+func activateDarkMode(darkMode :bool):
+	$DarkLight.visible = darkMode
+
+func reset():
+	can_move = true
+	position = Vector2(screen_size.x / 2, (screen_size.y / 2) - 20)
+
+func get_game_over():
+	var temp_game_over = game_over
+	game_over = false
+	return temp_game_over

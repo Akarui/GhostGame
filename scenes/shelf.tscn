@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bij6vtgo5sr7f"]
+[gd_scene load_steps=8 format=3 uid="uid://bij6vtgo5sr7f"]
 
 [ext_resource type="Script" path="res://scripts/shelf.gd" id="1_sfxd1"]
 [ext_resource type="Texture2D" uid="uid://c3e43n2fis6pl" path="res://art/shelf.png" id="2_t22ka"]
@@ -23,6 +23,17 @@ tracks/0/keys = {
 _data = {
 "open_shelf": SubResource("Animation_3i5q1")
 }
+
+[sub_resource type="Gradient" id="Gradient_pac5r"]
+offsets = PackedFloat32Array(0, 0.695364)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y5d21"]
+gradient = SubResource("Gradient_pac5r")
+width = 500
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Shelf" type="Node2D"]
 position = Vector2(320, 430)
@@ -85,3 +96,10 @@ vertical_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_rgv2j")
 }
+
+[node name="DarkLight" type="PointLight2D" parent="."]
+color = Color(0.870588, 0.870588, 0.870588, 1)
+energy = 1.52
+range_z_min = 0
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_y5d21")

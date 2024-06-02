@@ -44,6 +44,7 @@ func _ready():
 	cursor.get_node("CanvasLayer").get_node("Label").text = "Cursor: 0"
 	books.get_child(0).highlight()
 	set_labels()
+	$DarkLight.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -144,5 +145,8 @@ func get_loci():
 	
 func open():
 	$AnimationPlayer.play("open_shelf")
+	
+func activateDarkMode():
+	$DarkLight.visible = true
 
 

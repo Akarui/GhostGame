@@ -2,6 +2,7 @@ extends PathFollow2D
 
 var speed = 0.03
 var previous_position = Vector2.ZERO
+var game_over = false;
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	previous_position = Vector2(position.x, position.y)
@@ -19,7 +20,7 @@ func _process(delta):
 	previous_position = position
 	
 	if $Area2D/MidVisionCast.is_colliding() && $Area2D/MidVisionCast.get_collider().is_in_group("player"):
-		print("Game Over")
+		game_over = true
 		
 	if (deltaX > 0) && (abs(deltaY) < abs(deltaX)):
 		$Area2D/AnimatedSprite2D.play("var1_walk_right")
