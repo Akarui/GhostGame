@@ -141,5 +141,8 @@ func set_labels():
 
 func get_loci():
 	return loci
+	
+func open():
+	$AnimationPlayer.play("open_shelf")
 
 
