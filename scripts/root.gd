@@ -2,7 +2,7 @@ extends Node2D
 
 #@onready var shelf_viewport: SubViewport = $BookShelfCanvasLayer/SubViewportContainer/SubViewport
 #@onready var shelf: Node2D = $BookShelfCanvasLayer/SubViewportContainer/SubViewport/Shelf
-@onready var shelf: Node2D = $Shelf
+
 @onready var shelf_list: Node = $ShelfList
 
 var shelf_scene = load("res://scenes/shelf.tscn")
@@ -10,6 +10,7 @@ var wanderer_scene = load("res://scenes/wanderer.tscn")
 var player_scene = load("res://scenes/player.tscn")
 
 var shelf_mode = false
+var player_shelf = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +23,7 @@ func _ready():
 	player_instance.name = "player"
 	add_child(player_instance)
 	
-	gen_shelves(10)
+	gen_shelves($ShelfAccessorList.get_child_count())
 	for shelf in shelf_list.get_children():
 		print(shelf.get_book_titles())
 		
@@ -31,9 +32,18 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("open_shelf"):
-		if not shelf_mode:
+		# check for active shelf
+		if shelf_mode and player_shelf < 0:
+			print("ERROR: shouldn't be in shelf_mode without a player_shelf defined")
+			get_tree().quit()
+		if not shelf_mode and player_shelf > -1:
 			shelf_mode = true
-			shelf.open()
+			shelf_list.get_child(player_shelf).open()
+			#player.can_move = false
+		elif shelf_mode:
+			shelf_mode = false
+			shelf_list.get_child(player_shelf).close()
+			#player.can_move = true
 			
 		
 		#if shelf_viewport.get_child_count() > 0:
@@ -56,3 +66,7 @@ func verify_shelves():
 		total_mistakes += shelf.check_shelving()
 	print("TOTAL MISTAKES: %d" % total_mistakes)
 	return total_mistakes
+	
+func set_player_shelf(index):
+	player_shelf = index
+

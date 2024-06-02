@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bk73ee6d1sbgg"]
+[gd_scene load_steps=32 format=3 uid="uid://bk73ee6d1sbgg"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_55hyl"]
 [ext_resource type="Texture2D" uid="uid://dilpy8lkg2y8x" path="res://art/character_assets/char_walk_idle_ghost_V2-Sheet.png" id="3_qr34u"]
@@ -188,6 +188,9 @@ gradient = SubResource("Gradient_pac5r")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_42cr6"]
+radius = 2.0
+
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_55hyl")
 
@@ -207,5 +210,12 @@ color = Color(0.870588, 0.870588, 0.870588, 1)
 energy = 0.5
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_qf6mb")
+
+[node name="ShelfAccessCollider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessCollider"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_42cr6")
+debug_color = Color(0.912489, 0.201725, 0.53896, 0.42)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

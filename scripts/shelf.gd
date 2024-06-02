@@ -18,7 +18,8 @@ var book_selected = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	#var num_books = randi_range(3,8)
+	visible = false
+	
 	var num_books = 7
 	for i in num_books:
 		var book = book_scene.instantiate()
@@ -47,6 +48,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not visible:
+		return
+		
 	if not book_selected:
 		if Input.is_action_just_pressed("cursor_left"):
 			if cursor_index > 0:
@@ -148,6 +152,9 @@ func get_book_titles():
 	
 func open():
 	$AnimationPlayer.play("open_shelf")
+	
+func close():
+	$AnimationPlayer.play("close_shelf")
 
 
 
