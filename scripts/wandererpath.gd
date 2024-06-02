@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-var speed = 0.05
+var speed = 0.03
 var previous_position = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
