@@ -40,7 +40,7 @@ func _process(delta):
 		if shelf_mode and player_shelf < 0:
 			print("ERROR: shouldn't be in shelf_mode without a player_shelf defined")
 			get_tree().quit()
-		elif not shelf_mode and player_shelf > -1:
+		elif not shelf_mode and player_shelf > -1 and !trueEnd:
 			shelf_mode = true
 			shelf_list.get_child(player_shelf).open()
 			player.can_move = false
