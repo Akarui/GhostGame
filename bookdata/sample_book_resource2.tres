@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BookResource" load_steps=2 format=3 uid="uid://bv281706p4o0s"]
+
+[ext_resource type="Script" path="res://scripts/book_resource.gd" id="1_j63ap"]
+
+[resource]
+script = ExtResource("1_j63ap")
+subjects = "Fiction"
+title = "The Haunted Library 2: Electric Boogaloo"
+author_birth = "1992"
+author_death = "2024"
+author_name = "Paige Turner"
+pub_year = "2025!?"
+num_characters = "12345"
+num_words = "666"

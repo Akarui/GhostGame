@@ -15,6 +15,10 @@ run/main_scene="res://scenes/root.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://art/icon.svg"
 
+[autoload]
+
+Global="*res://scripts/global.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -87,4 +91,3 @@ cursor_right={
 
 textures/canvas_textures/default_texture_filter=0
 textures/default_filters/anisotropic_filtering_level=0
-environment/defaults/default_clear_color=Color(0.151319, 0.410791, 0.254208, 1)
