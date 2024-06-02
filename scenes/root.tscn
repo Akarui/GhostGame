@@ -6,13 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://dguqa6gwvybwa" path="res://art/set_piece_assets/bookshelf_front.png" id="4_koglj"]
 [ext_resource type="Texture2D" uid="uid://c41epds6gch3p" path="res://art/set_piece_assets/messy_bookshelf_front.png" id="5_ujaf6"]
 [ext_resource type="Texture2D" uid="uid://byfiad5iceekg" path="res://art/set_piece_assets/bookshelf_sides.png" id="6_3c67u"]
-[ext_resource type="PackedScene" uid="uid://bij6vtgo5sr7f" path="res://scenes/shelf.tscn" id="7_poejy"]
+
 [ext_resource type="Script" path="res://scripts/wanderer.gd" id="8_6c0ij"]
 [ext_resource type="PackedScene" uid="uid://bk73ee6d1sbgg" path="res://scenes/player.tscn" id="8_b5omt"]
 [ext_resource type="PackedScene" uid="uid://dp7yl5n4hqxok" path="res://scenes/wanderer.tscn" id="9_ltw3n"]
 [ext_resource type="Script" path="res://scenes/Cooldown.gd" id="11_30psj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2athe"]
+[ext_resource type="PackedScene" uid="uid://wesymtjahe8a" path="res://scenes/shelf_accessor.tscn" id="8_4vw8p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ivdjs"]
 texture = ExtResource("2_qwifs")
@@ -14337,6 +14338,29 @@ fill_to = Vector2(0.435897, 0.482906)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yg78p"]
 light_mode = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egblo"]
+size = Vector2(123, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1caxr"]
+size = Vector2(124, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bofn"]
+size = Vector2(124, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qalnp"]
+size = Vector2(156, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3ed3"]
+size = Vector2(60, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpkyq"]
+size = Vector2(91, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubnoh"]
+size = Vector2(154, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lb5yb"]
+size = Vector2(92, 30)
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_n4p34")
@@ -14363,8 +14387,6 @@ layer_4/tile_data = PackedInt32Array(720897, 1179652, 33, 458753, 1179652, 32, 3
 script = ExtResource("8_6c0ij")
 
 [node name="Player" parent="CanvasGroup" instance=ExtResource("8_b5omt")]
-
-[node name="Shelf" parent="." instance=ExtResource("7_poejy")]
 
 [node name="EndTitle" type="MarginContainer" parent="."]
 offset_left = 140.0
@@ -14399,3 +14421,65 @@ script = ExtResource("11_30psj")
 one_shot = true
 
 [connection signal="timeout" from="Cooldown/Timer" to="Cooldown" method="_on_timer_timeout"]
+[node name="ShelfList" type="Node" parent="."]
+
+[node name="ShelfAccessorList" type="Node" parent="."]
+
+[node name="ShelfAccessor" parent="ShelfAccessorList" instance=ExtResource("8_4vw8p")]
+position = Vector2(131, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor"]
+position = Vector2(13.5, 4.5)
+shape = SubResource("RectangleShape2D_egblo")
+
+[node name="ShelfAccessor2" parent="ShelfAccessorList" instance=ExtResource("8_4vw8p")]
+position = Vector2(346, 36)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor2"]
+position = Vector2(-10, 6)
+shape = SubResource("RectangleShape2D_1caxr")
+
+[node name="ShelfAccessor3" parent="ShelfAccessorList" instance=ExtResource("8_4vw8p")]
+position = Vector2(568, 41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor3"]
+position = Vector2(-8, 1)
+shape = SubResource("RectangleShape2D_7bofn")
+
+[node name="ShelfAccessor4" parent="ShelfAccessorList" instance=ExtResource("8_4vw8p")]
+position = Vector2(140, 191)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor4"]
+position = Vector2(4, 11)
+shape = SubResource("RectangleShape2D_qalnp")
+
+[node name="ShelfAccessor5" parent="ShelfAccessorList" instance=ExtResource("8_4vw8p")]
+position = Vector2(330, 169)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor5"]
+position = Vector2(6, 1)
+shape = SubResource("RectangleShape2D_m3ed3")
+
+[node name="ShelfAccessor6" parent="ShelfAccessorList" instance=ExtResource("8_4vw8p")]
+position = Vector2(520, 137)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor6"]
+position = Vector2(-8.5, 1)
+shape = SubResource("RectangleShape2D_jpkyq")
+
+[node name="ShelfAccessor7" parent="ShelfAccessorList" instance=ExtResource("8_4vw8p")]
+position = Vector2(128, 294)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor7"]
+position = Vector2(16, 4)
+shape = SubResource("RectangleShape2D_ubnoh")
+
+[node name="ShelfAccessor8" parent="ShelfAccessorList" instance=ExtResource("8_4vw8p")]
+position = Vector2(509, 247)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor8"]
+position = Vector2(3, 2)
+shape = SubResource("RectangleShape2D_lb5yb")
+
+[editable path="ShelfAccessorList/ShelfAccessor"]
+[editable path="ShelfAccessorList/ShelfAccessor2"]
