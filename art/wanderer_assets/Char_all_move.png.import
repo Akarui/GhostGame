@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6ch5s2a6r4k3"
-path="res://.godot/imported/char_all.png-95b369c8e476858990be6ef10a7ab053.ctex"
+uid="uid://gfdc1l0odpqn"
+path="res://.godot/imported/Char_all_move.png-ca70fdbf54a80f88736178d213ea0670.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/wanderer_assets/char_all.png"
-dest_files=["res://.godot/imported/char_all.png-95b369c8e476858990be6ef10a7ab053.ctex"]
+source_file="res://art/wanderer_assets/Char_all_move.png"
+dest_files=["res://.godot/imported/Char_all_move.png-ca70fdbf54a80f88736178d213ea0670.ctex"]
 
 [params]
 
