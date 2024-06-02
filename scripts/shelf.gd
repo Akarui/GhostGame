@@ -157,8 +157,8 @@ func open():
 func close():
 	$AnimationPlayer.play("close_shelf")
 	
-func activateDarkMode():
-	$DarkLight.visible = true
+func activateDarkMode(darkMode: bool):
+	$DarkLight.visible = darkMode
 
 
 

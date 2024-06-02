@@ -256,9 +256,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jlmna"]
-radius = 6.0
-height = 22.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6315"]
+radius = 46.0005
 
 [node name="Wanderer" type="Node2D"]
 
@@ -283,9 +282,8 @@ sprite_frames = SubResource("SpriteFrames_an6wq")
 animation = &"var1_walk_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D2/PathFollow2D/Area2D"]
-visible = false
 position = Vector2(0, 6)
-shape = SubResource("CapsuleShape2D_jlmna")
+shape = SubResource("CircleShape2D_x6315")
 
 [node name="MidVisionCast" type="RayCast2D" parent="Path2D2/PathFollow2D/Area2D"]
 collide_with_areas = true

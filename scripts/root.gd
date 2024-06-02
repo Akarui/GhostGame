@@ -14,6 +14,7 @@ var dark_mode = false
 var isPaused = false
 var trueEnd = false
 var player_shelf = -1
+var timeout = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,11 +25,16 @@ func _ready():
 	gen_shelves($ShelfAccessorList.get_child_count())
 	for shelf in shelf_list.get_children():
 		print(shelf.get_book_titles())
-		
-	#verify_shelves()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$HUD/RoundTimerLabel.text = str(snapped($RoundTimer.time_left, 1))
+	
+	if Input.is_action_just_pressed("menu"):
+		# pause
+		get_tree().quit()
+		
 	if Input.is_action_just_pressed("open_shelf"):
 		# check for active shelf
 		if shelf_mode and player_shelf < 0:
@@ -39,24 +45,36 @@ func _process(delta):
 			shelf_list.get_child(player_shelf).open()
 			player.can_move = false
 			if dark_mode:
-				shelf.activateDarkMode()
+				shelf_list.get_child(player_shelf).activateDarkMode(true)
 		elif shelf_mode:
 			shelf_mode = false
 			shelf_list.get_child(player_shelf).close()
 			player.can_move = true
-			# turn off darkmode?
+			#shelf_list.get_child(player_shelf).activateDarkMode(false)
 			
-	if (player.get_game_over() || wanderer.is_game_over()) && $Cooldown.is_ready:
+	if (player.get_game_over() || wanderer.is_game_over() || timeout) && $Cooldown.is_ready:
+		if shelf_mode:
+			shelf_mode = false
+			shelf_list.get_child(player_shelf).close()
+			player.can_move = true
+		
+		var total_books = $ShelfList.get_child_count() * 7
+		var correct = total_books - verify_shelves()
+		if correct == total_books:
+			$EndTitle/ResultsLabel.modulate = Color.SEA_GREEN
+		$EndTitle/ResultsLabel.text = "%d / %d sorted correctly" % [correct, total_books]
+			
 		if !dark_mode:
+			$HUD/RoundTimerLabel.visible = false
 			$Cooldown.start_timer()
 			player.reset()
 			wanderer.reset()
 			dark_mode = true
-			player.activateDarkMode(true)
 			$CanvasModulate.visible = true
 			player.game_over = false
 			wanderer.set_game_over(false)
 			$EndTitle.visible = true
+			timeout = false
 		else:
 			trueEnd = true
 			$EndTitle.visible = true
@@ -65,6 +83,7 @@ func _process(delta):
 	if $EndTitle.visible && !trueEnd && $Cooldown.is_ready:
 		if Input.is_anything_pressed():
 			$EndTitle.visible = false
+			player.activateDarkMode(true)
 			
 func gen_shelves(quantity):
 	for i in range(quantity):
@@ -81,3 +100,5 @@ func verify_shelves():
 func set_player_shelf(index):
 	player_shelf = index
 
+func _on_timer_timeout():
+	timeout = true
