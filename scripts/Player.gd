@@ -8,8 +8,7 @@ var screen_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	# So we can decide player start point
-	position = Vector2(PLAYER_START_X, PLAYER_START_Y)
+	modulate.a8 = 98
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -29,17 +28,23 @@ func _process(delta):
 	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
+		if (velocity.x > 0):
+			$AnimatedSprite2D.play("walk_right")
+		if (velocity.x < 0):
+			$AnimatedSprite2D.play("walk_left")
+		if (velocity.y < 0):
+			$AnimatedSprite2D.play("walk_up")
+		if (velocity.y > 0):
+			$AnimatedSprite2D.play("walk_down")
 	else:
-		$AnimatedSprite2D.stop()
+		$AnimatedSprite2D.play("idle")
 		
 	position += velocity * delta
 	
 	# Clamp can be adjusted as needed for sprite
 	position = position.clamp(Vector2(15,15), Vector2(screen_size.x - 15, screen_size.y - 15))
-		
-		
-signal spotted
 
-func _on_body_entered(body):
-	print(body, " entered")
+
+func _on_area_entered(area):
+	if area.is_in_group("enemy"):
+		print(area, "Game Over") # Replace with function body.
