@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://1gr6kaguk6ra"]
+
+[ext_resource type="Script" path="res://scripts/title_menu.gd" id="1_ajruh"]
+[ext_resource type="Texture2D" uid="uid://bbuqqg5cesydb" path="res://art/title.png" id="2_f70qc"]
+
+[sub_resource type="Gradient" id="Gradient_ey1ej"]
+offsets = PackedFloat32Array(0, 0.819672)
+colors = PackedColorArray(0.607008, 0.533701, 0.715253, 1, 0.221246, 0.121208, 0.210976, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_00h68"]
+gradient = SubResource("Gradient_ey1ej")
+fill = 1
+fill_from = Vector2(0.508547, 0.512821)
+
+[node name="TitleMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ajruh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_00h68")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="Title" type="TextureRect" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_f70qc")
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 5
+
+[node name="PlayButton" type="Button" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PLAY"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "QUIT"
+
+[node name="CreditLabel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 448.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.728098, 0.516613, 0.658944, 1)
+theme_override_font_sizes/font_size = 12
+text = "Raylyn Pettigrew & Cody Brock - 2024 - Micro Jam 015"
+vertical_alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -138.0
+offset_top = -116.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HowToPlayLabel" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Alphabetize shelves,
+without scaring patrons!
+Walk: WASD
+Open/Close bookcase: Space
+Toggle book: Enter
+Move book: Arrows"
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer2/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
