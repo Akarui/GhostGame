@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bas0akupu1g3s"]
+[gd_scene load_steps=30 format=3 uid="uid://bas0akupu1g3s"]
 
 [ext_resource type="Script" path="res://scripts/root.gd" id="1_n4p34"]
 [ext_resource type="Texture2D" uid="uid://bjshgqt56b6en" path="res://art/set_piece_assets/wallpapers.png" id="2_qwifs"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/wanderer.gd" id="8_6c0ij"]
 [ext_resource type="PackedScene" uid="uid://bk73ee6d1sbgg" path="res://scenes/player.tscn" id="8_b5omt"]
 [ext_resource type="PackedScene" uid="uid://dp7yl5n4hqxok" path="res://scenes/wanderer.tscn" id="9_ltw3n"]
-[ext_resource type="Script" path="res://scenes/Cooldown.gd" id="11_30psj"]
+[ext_resource type="Script" path="res://scripts/Cooldown.gd" id="11_30psj"]
 [ext_resource type="PackedScene" uid="uid://wesymtjahe8a" path="res://scenes/shelf_accessor.tscn" id="11_rqe41"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2athe"]
@@ -14344,10 +14344,28 @@ fill_to = Vector2(0.91453, 0.957265)
 light_mode = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_106k8"]
-size = Vector2(121, 30)
+size = Vector2(121, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmqdi"]
-size = Vector2(121, 30)
+size = Vector2(127, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hc270"]
+size = Vector2(159, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mao2h"]
+size = Vector2(64, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ep3hv"]
+size = Vector2(159, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uet0o"]
+size = Vector2(95, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrfd3"]
+size = Vector2(94, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ua0qy"]
+size = Vector2(127, 28)
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_n4p34")
@@ -14423,15 +14441,57 @@ one_shot = true
 position = Vector2(143, 78)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor"]
-position = Vector2(2, -37)
+position = Vector2(2, -38.5)
 shape = SubResource("RectangleShape2D_106k8")
 
 [node name="ShelfAccessor2" parent="ShelfAccessorList" instance=ExtResource("11_rqe41")]
 position = Vector2(337, 40)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor2"]
-position = Vector2(-1.5, -3)
+position = Vector2(-1.5, -2)
 shape = SubResource("RectangleShape2D_pmqdi")
+
+[node name="ShelfAccessor3" parent="ShelfAccessorList" instance=ExtResource("11_rqe41")]
+position = Vector2(337, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor3"]
+position = Vector2(-192.5, 158.5)
+shape = SubResource("RectangleShape2D_hc270")
+
+[node name="ShelfAccessor4" parent="ShelfAccessorList" instance=ExtResource("11_rqe41")]
+position = Vector2(337, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor4"]
+position = Vector2(0, 126.5)
+shape = SubResource("RectangleShape2D_mao2h")
+
+[node name="ShelfAccessor5" parent="ShelfAccessorList" instance=ExtResource("11_rqe41")]
+position = Vector2(337, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor5"]
+position = Vector2(-192.5, 255.5)
+shape = SubResource("RectangleShape2D_ep3hv")
+
+[node name="ShelfAccessor6" parent="ShelfAccessorList" instance=ExtResource("11_rqe41")]
+position = Vector2(337, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor6"]
+position = Vector2(174.5, 207)
+shape = SubResource("RectangleShape2D_uet0o")
+
+[node name="ShelfAccessor7" parent="ShelfAccessorList" instance=ExtResource("11_rqe41")]
+position = Vector2(337, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor7"]
+position = Vector2(175, 96.5)
+shape = SubResource("RectangleShape2D_rrfd3")
+
+[node name="ShelfAccessor8" parent="ShelfAccessorList" instance=ExtResource("11_rqe41")]
+position = Vector2(337, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShelfAccessorList/ShelfAccessor8"]
+position = Vector2(223, -1)
+shape = SubResource("RectangleShape2D_ua0qy")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

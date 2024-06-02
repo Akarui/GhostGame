@@ -69,6 +69,7 @@ func _process(delta):
 			$Cooldown.start_timer()
 			player.reset()
 			wanderer.reset()
+			wanderer.pause(true)
 			dark_mode = true
 			$CanvasModulate.visible = true
 			player.game_over = false
@@ -84,6 +85,7 @@ func _process(delta):
 		if Input.is_anything_pressed():
 			$EndTitle.visible = false
 			player.activateDarkMode(true)
+			wanderer.pause(false)
 			
 func gen_shelves(quantity):
 	for i in range(quantity):

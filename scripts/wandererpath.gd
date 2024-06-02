@@ -1,8 +1,10 @@
 extends PathFollow2D
 
+var default_speed = 0.03
 var speed = 0.03
 var previous_position = Vector2.ZERO
-var game_over = false;
+var game_over = false
+var paused = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	previous_position = Vector2(position.x, position.y)
@@ -11,6 +13,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if paused:
+		speed = 0
+	else:
+		speed = default_speed
+		
 	progress_ratio += delta * speed
 	var deltaX = position.x - previous_position.x
 	var deltaY = position.y - previous_position.y

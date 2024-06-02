@@ -1,6 +1,5 @@
 extends Node2D
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -22,3 +21,5 @@ func reset():
 	set_game_over(false)
 	$Path2D2/PathFollow2D.progress_ratio = float(0)
 		
+func pause(pause :bool):
+	$Path2D2/PathFollow2D.paused = pause
