@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BookResource" load_steps=2 format=3 uid="uid://d0tw3ttsku1v4"]
+
+[ext_resource type="Script" path="res://scripts/book_resource.gd" id="1_bkum2"]
+
+[resource]
+script = ExtResource("1_bkum2")
+subjects = "Fiction"
+title = "The Haunted Library"
+author_birth = "1992"
+author_death = "2024"
+author_name = "Paige Turner"
+pub_year = "2024"
+num_characters = "12345"
+num_words = "666"
