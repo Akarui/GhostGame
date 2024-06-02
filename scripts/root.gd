@@ -3,6 +3,8 @@ extends Node2D
 #@onready var shelf_viewport: SubViewport = $BookShelfCanvasLayer/SubViewportContainer/SubViewport
 #@onready var shelf: Node2D = $BookShelfCanvasLayer/SubViewportContainer/SubViewport/Shelf
 @onready var shelf: Node2D = $Shelf
+@onready var wanderer: Node2D = $Wanderer
+@onready var player: Node2D = $Player
 
 var shelf_scene = load("res://scenes/shelf.tscn")
 var wanderer_scene = load("res://scenes/wanderer.tscn")
@@ -13,13 +15,6 @@ var shelf_mode = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	var wanderer_instance = wanderer_scene.instantiate()
-	wanderer_instance.name = "wanderer"
-	add_child(wanderer_instance)
-	
-	var player_instance = player_scene.instantiate()
-	player_instance.name = "player"
-	add_child(player_instance)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,6 +22,8 @@ func _process(delta):
 		if not shelf_mode:
 			shelf_mode = true
 			shelf.open()
+			player.can_move = false
+			
 			
 		
 		#if shelf_viewport.get_child_count() > 0:
